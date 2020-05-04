@@ -5,7 +5,6 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
-import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
@@ -15,13 +14,10 @@ export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
-      subtitle
-      subsubtitle
       description
       keywords
     }
     projects: allSanitySampleProject(
-      limit: 6
       sort: {fields: [publishedAt], order: DESC}
       filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
@@ -51,6 +47,9 @@ export const query = graphql`
             alt
           }
           title
+          role
+          link
+          publishedAt
           _rawExcerpt
           slug {
             current
@@ -88,18 +87,16 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Container>
-        <h1>Welcome to {site.title}</h1>
-        <p>{site.subtitle}</p>
-        <p>{site.subsubtitle}</p>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title='Latest projects'
-            nodes={projectNodes}
-            browseMoreHref='/archive/'
-          />
-        )}
-      </Container>
+      <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight ">Maxim designs systems to build well-crafted sites such as:</h2>
+      {projectNodes && (
+        <ProjectPreviewGrid
+          type='project'
+          firstLabel='Projects'
+          secondLabel='Role'
+          thirdLabel='Year'
+          nodes={projectNodes}
+        />
+      )}
     </Layout>
   )
 }

@@ -3,16 +3,21 @@ import React from 'react'
 import ProjectPreview from './project-preview'
 
 import styles from './project-preview-grid.module.css'
+import SectionHeader from './section-header'
 
 function ProjectPreviewGrid (props) {
   return (
-    <div className={styles.root}>
-      {props.title && <h2 className={styles.headline}>{props.title}</h2>}
-      <ul className={styles.grid}>
+    <div className="mb-12">
+      <SectionHeader
+        firstLabel={props.firstLabel}
+        secondLabel={props.secondLabel}
+        thirdLabel={props.thirdLabel}
+      />
+      <ul>
         {props.nodes &&
           props.nodes.map(node => (
             <li key={node.id}>
-              <ProjectPreview {...node} />
+                <ProjectPreview {...node} type={props.type} />
             </li>
           ))}
       </ul>

@@ -15,13 +15,6 @@ export const query = graphql`
         _id
         title
       }
-      relatedProjects {
-        title
-        _id
-        slug {
-          current
-        }
-      }
       mainImage {
         crop {
           _key
@@ -45,6 +38,7 @@ export const query = graphql`
         alt
       }
       title
+      role
       slug {
         current
       }

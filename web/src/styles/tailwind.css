@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+iframe::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+    font-family: 'Space Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    -webkit-font-smoothing: antialiased;
+    @apply bg-black text-green-500 text-sm;
+}
+
+.wrapper {
+    height: calc(100vh - 2rem);
+}
+
+.border-strike {
+    @nest &:before {
+        @apply absolute left-0 right-0 bg-green-100;
+        content: "";
+        height: 1px;
+        top: 50%;
+    }
+}
+
+.highlight {
+    @apply relative transition-all duration-100 ease-in-out;
+
+    @nest &:before {
+        @apply absolute inset-0 bg-green-500;
+        content: "";
+        max-width: 0;
+        transition: .3s cubic-bezier( .19, 1, .22, 1 ) all;
+    }
+
+    @nest &:hover {
+        @apply text-black;
+    }
+
+    @nest &:hover:before {
+        max-width: 2000px;
+    }
+
+    @nest &[aria-current="page"]:not(.logo) {
+        @apply text-black;
+        
+        @nest &:before {
+            max-width: 2000px;
+        }
+    }
+}
+
+.frame {
+    transition: .6s cubic-bezier( .19, 1, .22, 1 ) transform;
+}

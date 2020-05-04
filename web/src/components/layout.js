@@ -1,23 +1,40 @@
 import React from 'react'
-import Header from './header'
 
 import '../styles/layout.css'
-import styles from './layout.module.css'
+import '../styles/tailwind.css'
+import Container from './container'
+import Nav from './nav'
 
-const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
-  <>
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
-    <div className={styles.content}>{children}</div>
-    <footer className={styles.footer}>
-      <div className={styles.footerWrapper}>
-        <div className={styles.siteInfo}>
-          © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
+
+  function getPageTitle(url) {
+    switch(url) {
+      case '/':
+        return 'Work';
+      case '/about/':
+        return 'About';
+      default:
+        return '';
+    }
+  }
+
+  return (
+    <Container>
+      <Nav siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
+      <div className="w-10/12 ml-auto">
+        <div className="bg-black z-10 border-b border-green-500 sticky w-full bg-black top-0 px-12 py-2 flex items-center border-strike">
+          <p className="py-1 px-2 text-center bg-black relative inline-block">
+            <span className="relative">
+              {getPageTitle(location.pathname)}
+            </span>
+          </p>
+        </div>
+        <div className="p-12">
+          {children}
         </div>
       </div>
-    </footer>
-  </>
-)
+    </Container>
+  )
+}
 
 export default Layout

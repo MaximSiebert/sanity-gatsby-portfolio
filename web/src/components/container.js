@@ -1,9 +1,13 @@
 import React from 'react'
 
-import styles from './container.module.css'
-
 const Container = ({children}) => {
-  return <div className={styles.root}>{children}</div>
+  return (
+    <div className="m-4 wrapper border border-green-500 overflow-hidden relative">
+      <div className="flex wrapper items-start overflow-y-scroll">
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export default Container

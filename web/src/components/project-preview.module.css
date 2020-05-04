@@ -1,9 +1,3 @@
-.root {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
 .title {
   composes: responsiveTitle1 from './typography.module.css';
 }
@@ -31,12 +25,9 @@
   }
 }
 
-.excerpt {
-  @nest & p {
-    margin: 0.5em 0;
-  }
-
-  @nest & strong {
-    font-weight: 600;
-  }
+.handle {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: red;
 }

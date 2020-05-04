@@ -11,6 +11,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'role',
+      title: 'Role',
+      type: 'string'
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -21,10 +26,15 @@ export default {
       }
     },
     {
+      name: 'link',
+      title: 'Link',
+      type: 'url'
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       description: 'You can use this field to schedule projects where you show them',
-      type: 'datetime'
+      type: 'date'
     },
     {
       name: 'excerpt',
@@ -36,16 +46,6 @@ export default {
       title: 'Members',
       type: 'array',
       of: [{type: 'projectMember'}]
-    },
-    {
-      name: 'startedAt',
-      title: 'Started at',
-      type: 'datetime'
-    },
-    {
-      name: 'endedAt',
-      title: 'Ended at',
-      type: 'datetime'
     },
     {
       name: 'mainImage',
@@ -62,12 +62,6 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'projectPortableText'
-    },
-    {
-      name: 'relatedProjects',
-      title: 'Related projects',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'sampleProject'}}]
     }
   ],
   preview: {

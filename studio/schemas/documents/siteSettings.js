@@ -15,16 +15,6 @@ export default {
       title: 'Title'
     },
     {
-      name: 'subtitle',
-      type: 'string',
-      title: 'Subtitle'
-    },
-    {
-      name: 'subsubtitle',
-      type: 'string',
-      title: 'Subsubtitle'
-    },
-    {
       name: 'description',
       type: 'text',
       title: 'Description',
