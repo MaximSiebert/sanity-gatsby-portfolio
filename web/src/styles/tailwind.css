@@ -28,9 +28,9 @@ body {
 
 .border-strike {
     @nest &:before {
-        @apply absolute left-0 right-0 bg-green-100;
+        @apply absolute left-0 right-0;
         content: "";
-        height: 1px;
+        border: .5px dashed #18443A;
         top: 50%;
     }
 }

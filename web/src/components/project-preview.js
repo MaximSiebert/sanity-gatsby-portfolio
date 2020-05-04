@@ -57,7 +57,7 @@ function ProjectPreview (props) {
           </div> */}
           <h3 className="w-1/2 text-4xl">{props.title}</h3>
           <p className="w-1/4 pl-2">{props.role}</p>
-          <p className="w-1/4 text-right">
+          <div className="w-1/4 text-right">
             {props.type === "project"
               ? (
                 <div className={styles.publishedAt}>
@@ -76,7 +76,7 @@ function ProjectPreview (props) {
                 </div>
               )
             }
-          </p>
+          </div>
           {props._rawExcerpt && (
             <div className={styles.excerpt}>
               <BlockText blocks={props._rawExcerpt} />
@@ -90,7 +90,7 @@ function ProjectPreview (props) {
             <a className="highlight text-center px-2 bg-black relative inline-block" href={props.link} target="_blank" rel="noopener noreferrer">
               <span className="relative flex">
                 <span className="py-1">{props.title}</span>
-                <span class="ml-1 block text-lg">↗</span>
+                <span className="ml-1 block text-lg">↗</span>
               </span>
             </a>
             <button
@@ -104,7 +104,7 @@ function ProjectPreview (props) {
             </button>
           </div>
           {showFrame &&
-            <iframe className="flex-grow w-full block" src={props.link}></iframe>
+            <iframe className="bg-white flex-grow w-full block" src={props.link}></iframe>
           }
         </div>
       </div>
