@@ -9,6 +9,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import PageTitle from '../components/page-title'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -87,16 +88,19 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight ">Maxim designs systems to build well-crafted sites such as:</h2>
-      {projectNodes && (
-        <ProjectPreviewGrid
-          type='project'
-          firstLabel='Projects'
-          secondLabel='Role'
-          thirdLabel='Year'
-          nodes={projectNodes}
-        />
-      )}
+      <PageTitle title="Work" />
+      <div className="p-12">
+        <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight ">Maxim designs systems to build well-crafted sites such as:</h2>
+        {projectNodes && (
+          <ProjectPreviewGrid
+            type='project'
+            firstLabel='Projects'
+            secondLabel='Role'
+            thirdLabel='Year'
+            nodes={projectNodes}
+          />
+        )}
+      </div>
     </Layout>
   )
 }
