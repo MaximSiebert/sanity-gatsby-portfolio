@@ -10,6 +10,7 @@ import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import PageTitle from '../components/page-title'
+import TransitionLink from "gatsby-plugin-transition-link"
 
 export const query = graphql`
   query IndexPageQuery {
@@ -100,6 +101,21 @@ const IndexPage = props => {
             nodes={projectNodes}
           />
         )}
+        <div>
+          <TransitionLink
+            className="block text-3xl border border-green-100 p-12 bg-black highlight"
+            to='/contact/'
+            exit={{
+              length: .6,
+            }}
+            entry={{
+              delay: .6,
+              length: .6
+            }}
+          >
+            <span className="relative">Let's build you one too. maxim.siebert@gmail.com</span>
+          </TransitionLink>
+        </div>
       </div>
     </Layout>
   )

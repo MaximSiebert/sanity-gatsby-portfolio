@@ -28,8 +28,8 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
           console.log("enter object is", enter)
           return (
                 <motion.div
-                  className="w-10/12 ml-auto border-l border-green-500 left-1"
-                  initial="hidden"
+                  className="w-9/12 ml-auto border-l border-green-500 left-1"
+                  initial="false"
                   animate={mount ? "visible" : "hidden"}
                   transition={{ duration: .6, ease: [.19, 1, 0.22, 1] }}
                   variants={variants}
