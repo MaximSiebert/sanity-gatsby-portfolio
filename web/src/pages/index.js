@@ -88,7 +88,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <PageTitle title="Work" />
+      <PageTitle title="Work"></PageTitle>
       <div className="p-12">
         <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight ">Maxim designs systems to build well-crafted sites such as:</h2>
         {projectNodes && (

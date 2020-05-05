@@ -18,6 +18,10 @@ function ProjectPreview (props) {
   }
 
   function handleHideFrame (e) {
+    if(event.keyCode === 27) {
+      setShowFrame(false)
+    }
+
     if (node.current.contains(e.target) && !closeButton.current.contains(e.target)) {
       // inside click
       return;
@@ -28,12 +32,15 @@ function ProjectPreview (props) {
   useEffect(() => {
     if (showFrame) {
       document.addEventListener("mousedown", handleHideFrame);
+      document.addEventListener("keydown", handleHideFrame);
     } else {
       document.removeEventListener("mousedown", handleHideFrame);
+      document.removeEventListener("keydown", handleHideFrame);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleHideFrame);
+      document.removeEventListener("keydown", handleHideFrame);
     };
   }, [showFrame]);
 
@@ -86,7 +93,7 @@ function ProjectPreview (props) {
       </button>
       <div ref={node} className={cn(showFrame ? "translate-x-0" : "translate-x-full", "absolute frame w-8/12 z-20 right-0 top-0 bottom-0 transform")}>
         <div className="w-full h-full flex flex-col border-l border-green-500 h-full overflow-y-scroll bg-black">
-          <div className="border-b border-green-500 sticky w-full bg-black top-0 p-2 flex items-center border-strike">
+          <div className="sticky w-full bg-black top-0 p-2 flex items-center border-strike">
             <a className="highlight text-center px-2 bg-black relative inline-block" href={props.link} target="_blank" rel="noopener noreferrer">
               <span className="relative flex">
                 <span className="py-1">{props.title}</span>

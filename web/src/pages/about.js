@@ -49,7 +49,7 @@ const AboutPage = props => {
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
-      <SEO title='About' />
+      <SEO title="About" />
       <PageTitle title="About" />
       <div className="p-12">
         <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">I design and develop modular, accessible, and performant systems which I use to build well-crafted sites and applications. I do research, try new things, and have honest conversations in order to find the best solutions.</p>
