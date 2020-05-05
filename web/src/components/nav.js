@@ -77,17 +77,17 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
           </li>
         </ul>
         <div class="flex mt-auto border-t border-green-100">
-          <a className="flex-grow border border-r-0 border-t-0 border-green-100 px-6 py-4 highlight" href="">
+          <a className="flex-grow px-6 py-4 highlight" href="">
             <span className="relative">
-              Get in touch
+              maxim.siebert@gmail.com
             </span>
           </a>
-          <a className="text-sm uppercase tracking-wider border border-r-0 border-t-0 border-green-100 p-4 flex items-center highlight" href="">
+          <a className="text-sm uppercase tracking-wider border-l border-green-100 p-4 flex items-center highlight" href="">
             <span className="relative">
               <TwitterIcon classes="w-4 h-auto" />
             </span>
           </a>
-          <a className="text-sm uppercase tracking-wider border border-r-0 border-t-0 border-green-100 p-4 flex items-center highlight" href="">
+          <a className="text-sm uppercase tracking-wider border-l border-green-100 p-4 flex items-center highlight" href="">
             <span className="relative">
               <DribbbleIcon classes="w-4 h-auto" />
             </span>
