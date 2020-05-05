@@ -2,13 +2,11 @@ import React from 'react'
 
 function PageTitle({ title }) {
   return (
-    <div className="bg-black z-10 sticky w-full bg-black top-0 px-12 py-2 flex items-center border-strike">
-      <p className="py-1 px-2 text-center bg-black relative inline-block">
-        <span className="relative">
-          {title}
-        </span>
-      </p>
-    </div>
+    <p className="py-3 pl-4 mb-1">
+      <span className="relative">
+        {title}
+      </span>
+    </p>
   )
 }
 

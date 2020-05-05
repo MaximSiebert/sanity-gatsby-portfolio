@@ -90,32 +90,30 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <PageTitle title="Work"></PageTitle>
-      <div className="p-12">
-        <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight ">Maxim designs systems to build well-crafted sites such as:</h2>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            type='project'
-            firstLabel='Projects'
-            secondLabel='Role'
-            thirdLabel='Year'
-            nodes={projectNodes}
-          />
-        )}
-        <div>
-          <TransitionLink
-            className="block text-3xl border border-green-100 p-12 bg-black highlight"
-            to='/contact/'
-            exit={{
-              length: .6,
-            }}
-            entry={{
-              delay: .6,
-              length: .6
-            }}
-          >
-            <span className="relative">Let's build you one too. maxim.siebert@gmail.com</span>
-          </TransitionLink>
-        </div>
+      <h2 className="tracking-tight normal-case text-white text-6xl mb-20 leading-tight pl-4">Maxim designs systems to build well-crafted sites such as:</h2>
+      {projectNodes && (
+        <ProjectPreviewGrid
+          type='project'
+          firstLabel='Projects'
+          secondLabel='Role'
+          thirdLabel='Year'
+          nodes={projectNodes}
+        />
+      )}
+      <div>
+        <TransitionLink
+          className="block text-3xl border border-green-100 p-12 bg-black highlight"
+          to='/contact/'
+          exit={{
+            length: .6,
+          }}
+          entry={{
+            delay: .6,
+            length: .6
+          }}
+        >
+          <span className="relative">Let's build you one too. maxim.siebert@gmail.com</span>
+        </TransitionLink>
       </div>
     </Layout>
   )

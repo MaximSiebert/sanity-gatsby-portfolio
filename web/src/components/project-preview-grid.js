@@ -10,8 +10,6 @@ function ProjectPreviewGrid (props) {
     <div className="mb-12">
       <SectionHeader
         firstLabel={props.firstLabel}
-        secondLabel={props.secondLabel}
-        thirdLabel={props.thirdLabel}
       />
       <ul>
         {props.nodes &&

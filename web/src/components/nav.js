@@ -15,9 +15,9 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
       <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
         <Icon symbol='hamburger' />
       </button>
-      <nav className={cn(styles.nav, showNav && styles.showNav, "wrapper w-3/12 sticky top-0 flex flex-col border-r border-green-500")}>
+      <nav className={cn(styles.nav, showNav && styles.showNav, "w-4/12 sticky top-0")}>
         <TransitionLink
-          className="relative logo pb-4 pt-16 pt-4 highlight" to='/'
+          className="logo px-4 py-3 rounded-lg hover:bg-gray-900 mb-1 block"
           to='/'
           exit={{
             length: .6,
@@ -27,12 +27,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
             length: .6
           }}
         >
-          <span className="relative px-6 text-6xl tracking-tight font-bold">M</span>
+          <span className="relative">Maxim Siebert</span>
         </TransitionLink>
-        <ul className="border-t border-b border-green-100">
+        <ul>
           <li>
             <TransitionLink
-                className="py-4 px-6 highlight"
+                className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
                 to='/'
                 exit={{
                   length: .6,
@@ -47,7 +47,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
           </li>
           <li>
             <TransitionLink
-              className="py-4 px-6 highlight"
+              className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
               to='/about/'
               exit={{
                 length: .6
@@ -62,7 +62,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
           </li>
           <li>
           <TransitionLink
-              className="py-4 px-6 highlight"
+              className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
               to='/contact/'
               exit={{
                 length: .6
@@ -76,18 +76,13 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
             </TransitionLink>
           </li>
         </ul>
-        <div class="flex mt-auto border-t border-green-100">
-          <a className="flex-grow px-6 py-4 highlight" href="">
-            <span className="relative">
-              maxim.siebert@gmail.com
-            </span>
-          </a>
-          <a className="text-sm uppercase tracking-wider border-l border-green-100 p-4 flex items-center highlight" href="">
+        <div class="flex">
+          <a className="px-4 py-3 rounded-lg hover:bg-gray-900" href="">
             <span className="relative">
               <TwitterIcon classes="w-4 h-auto" />
             </span>
           </a>
-          <a className="text-sm uppercase tracking-wider border-l border-green-100 p-4 flex items-center highlight" href="">
+          <a className="px-4 py-3 rounded-lg hover:bg-gray-900 ml-2" href="">
             <span className="relative">
               <DribbbleIcon classes="w-4 h-auto" />
             </span>

@@ -45,7 +45,7 @@
   }
 
   @media (--media-min-small) {
-    display: flex;
+    display: block;
   }
 }
 

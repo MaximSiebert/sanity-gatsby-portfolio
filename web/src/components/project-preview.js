@@ -47,7 +47,7 @@ function ProjectPreview (props) {
   return (
     <>
       <button
-        className="w-full text-left highlight text-white p-2 block focus:outline-none"
+        className="w-full text-left text-white bg-gray-900 rounded-lg mb-1 px-4 block focus:outline-none"
         onClick={showFrame ? handleHideFrame : handleShowFrame}
       >
         <div className="relative flex items-center">
