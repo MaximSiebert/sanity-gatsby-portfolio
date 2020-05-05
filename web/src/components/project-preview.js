@@ -47,10 +47,10 @@ function ProjectPreview (props) {
   return (
     <>
       <button
-        className="w-full text-left highlight text-white p-2 block focus:outline-none"
+        className="w-full text-left border border-green-100 rounded-lg overflow-hidden text-white block focus:outline-none"
         onClick={showFrame ? handleHideFrame : handleShowFrame}
       >
-        <div className="relative flex items-center">
+        <div className="relative">
           {/* <div className={styles.leadMediaThumb}>
             {props.mainImage && props.mainImage.asset && (
               <img
@@ -62,9 +62,7 @@ function ProjectPreview (props) {
               />
             )}
           </div> */}
-          <h3 className="w-1/2 text-4xl">{props.title}</h3>
-          <p className="w-1/4 pl-2">{props.role}</p>
-          <div className="w-1/4 text-right">
+          <div className="px-4 py-2 border-b border-green-100 font-mono tracking-wider text-xs">
             {props.type === "project"
               ? (
                 <div className={styles.publishedAt}>
@@ -84,11 +82,15 @@ function ProjectPreview (props) {
               )
             }
           </div>
-          {props._rawExcerpt && (
-            <div className={styles.excerpt}>
-              <BlockText blocks={props._rawExcerpt} />
-            </div>
-          )}
+          <div className="px-4 py-4">
+            <h3 className="w-1/2 text-4xl">{props.title}</h3>
+            <p className="">{props.role}</p>
+            {props._rawExcerpt && (
+              <div className={styles.excerpt}>
+                <BlockText blocks={props._rawExcerpt} />
+              </div>
+            )}
+          </div>
         </div>
       </button>
       <div ref={node} className={cn(showFrame ? "translate-x-0" : "translate-x-full", "absolute frame w-8/12 z-20 right-0 top-0 bottom-0 transform")}>
