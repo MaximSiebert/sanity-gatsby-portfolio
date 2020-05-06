@@ -82,7 +82,6 @@ const ProjectTemplate = props => {
   const project = data && data.sampleProject
   return (
     <Layout>
-      <SectionHeader title={project.title} />
       {errors && <SEO title='GraphQL Error' />}
       {project && <SEO title={project.title || 'Untitled'} />}
 

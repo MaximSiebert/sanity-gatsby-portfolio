@@ -58,7 +58,7 @@ function ProjectPreview (props) {
             delay: .6,
             length: .6
           }}
-          className="block relative items-center bg-gray-900 hover:bg-green-500 hover:text-black pt-3 pb-3 rounded-lg">
+          className="block relative items-center bg-gray-900 hover:bg-gray-800 active:bg-gray-900 pt-3 pb-3 rounded-lg">
           {/* <div className={styles.leadMediaThumb}>
             {props.mainImage && props.mainImage.asset && (
               <img

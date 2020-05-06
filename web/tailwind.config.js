@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': ['IBM Plex Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
-      'mono': ['Space Mono', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace']
+      'mono': ['IBM Plex Mono', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace']
     },
     fontSize: {
       'xs': '.75rem',
@@ -40,6 +40,8 @@ module.exports = {
       }
     },
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+  },
   plugins: [],
 }

@@ -28,8 +28,8 @@ function Project (props) {
       )}
       <Container>
         <div className="text-white">
-          <div className="py-8">
-            <h1 className="text-6xl leading-none font-medium">
+          <div className="pb-8">
+            <h1 className="text-5xl leading-none font-bold">
               {_rawExcerpt && (
                 <div className={styles.excerpt}>
                   <BlockText blocks={_rawExcerpt} />
