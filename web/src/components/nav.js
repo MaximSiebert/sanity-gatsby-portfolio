@@ -9,84 +9,80 @@ import TwitterIcon from './icon/twitter'
 import DribbbleIcon from './icon/dribbble'
 
 function Nav ({onHideNav, onShowNav, showNav, siteTitle}) {
+  const length = .4;
+  const delay = .4;
 
   return (
     <>
       <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
         <Icon symbol='hamburger' />
       </button>
-      <nav className={cn(styles.nav, showNav && styles.showNav, "w-4/12 sticky top-0")}>
-        <TransitionLink
-          className="logo px-4 py-3 rounded-lg hover:bg-gray-900 mb-1 block"
-          to='/'
-          exit={{
-            length: .6,
-          }}
-          entry={{
-            delay: .6,
-            length: .6
-          }}
-        >
-          <span className="relative">Maxim Siebert</span>
-        </TransitionLink>
-        <ul>
-          <li>
-            <TransitionLink
-                className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
-                to='/'
+      <nav className={cn(styles.nav, showNav && styles.showNav, "w-3/12 sticky top-0 pt-16 pr-12 border-r border-gray-800 h-screen")}>
+        <div className="pr-1">
+          <TransitionLink
+            className="pr-4 leading-tight flex items-center logo rounded-lg hover:bg-gray-900 mb-8 font-medium block"
+            to='/'
+            exit={{
+              length: length,
+            }}
+            entry={{
+              delay: delay,
+              length: length
+            }}
+          >
+            <img className="block w-12 h-auto rounded-lg" src="https://pbs.twimg.com/profile_images/883864805039386624/dO6Cjn9g_400x400.jpg" alt=""/>
+            <div className="ml-3 py-2 block text-base text-white">
+              Maxim Siebert
+              <span className="block text-xs font-normal font-mono opacity-75">Designer & Developer</span>
+            </div>
+          </TransitionLink>
+          <ul>
+            <li>
+              <TransitionLink
+                  className="block px-4 py-3 rounded-lg hover:bg-gray-900 mb-1 font-mono text-xs"
+                  to='/'
+                  exit={{
+                    length: length,
+                  }}
+                  entry={{
+                    delay: delay,
+                    length: length
+                  }}
+                >
+                  <span className="relative">01 Work & Services</span>
+                </TransitionLink>
+            </li>
+            <li>
+              <TransitionLink
+                className="block px-4 py-3 rounded-lg hover:bg-gray-900 mb-1 font-mono text-xs"
+                to='/about/'
                 exit={{
-                  length: .6,
+                  length: length
                 }}
                 entry={{
-                  delay: .6,
-                  length: .6
+                  delay: delay,
+                  length: length
                 }}
               >
-                <span className="relative">Work</span>
+                <span className="relative">02 About</span>
               </TransitionLink>
-          </li>
-          <li>
+            </li>
+            <li>
             <TransitionLink
-              className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
-              to='/about/'
-              exit={{
-                length: .6
-              }}
-              entry={{
-                delay: .6,
-                length: .6
-              }}
-            >
-              <span className="relative">About</span>
-            </TransitionLink>
-          </li>
-          <li>
-          <TransitionLink
-              className="px-4 py-3 rounded-lg hover:bg-gray-900 mb-1"
-              to='/contact/'
-              exit={{
-                length: .6
-              }}
-              entry={{
-                delay: .6,
-                length: .6
-              }}
-            >
-              <span className="relative">Contact</span>
-            </TransitionLink>
-          </li>
-        </ul>
-        <div class="flex">
-          <a className="px-4 py-3 rounded-lg hover:bg-gray-900" href="">
-            <span className="relative">
-              <TwitterIcon classes="w-4 h-auto" />
-            </span>
-          </a>
-          <a className="px-4 py-3 rounded-lg hover:bg-gray-900 ml-2" href="">
-            <span className="relative">
-              <DribbbleIcon classes="w-4 h-auto" />
-            </span>
-          </a>
+                className="block px-4 py-3 rounded-lg hover:bg-gray-900 mb-1 font-mono text-xs"
+                to='/contact/'
+                exit={{
+                  length: length
+                }}
+                entry={{
+                  delay: delay,
+                  length: length
+                }}
+              >
+                <span className="relative">03 Contact</span>
+              </TransitionLink>
+            </li>
+          </ul>
         </div>
       </nav>
     </>

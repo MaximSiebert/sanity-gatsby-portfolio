@@ -5,6 +5,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import Project from '../components/project'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import SectionHeader from '../components/section-header'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
@@ -42,6 +43,7 @@ export const query = graphql`
       slug {
         current
       }
+      _rawExcerpt
       _rawBody
       members {
         _key
@@ -80,6 +82,7 @@ const ProjectTemplate = props => {
   const project = data && data.sampleProject
   return (
     <Layout>
+      <SectionHeader title={project.title} />
       {errors && <SEO title='GraphQL Error' />}
       {project && <SEO title={project.title || 'Untitled'} />}
 

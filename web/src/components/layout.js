@@ -11,10 +11,12 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
 
   const variants = {
     hidden: {
-      x: "100%",
+      y: 10,
+      opacity: 0
     },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1
     },
   }
 
@@ -28,10 +30,10 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
           console.log("enter object is", enter)
           return (
                 <motion.div
-                  className="flex-grow pl-8"
+                  className="w-9/12 pl-12 pt-12"
                   initial="false"
                   animate={mount ? "visible" : "hidden"}
-                  transition={{ duration: .6, ease: [.19, 1, 0.22, 1] }}
+                  transition={{ duration: .4, ease: [.19, 1, 0.22, 1] }}
                   variants={variants}
                 >
                   {children}
