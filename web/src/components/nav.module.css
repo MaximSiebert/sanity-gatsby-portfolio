@@ -7,7 +7,6 @@
   border: none;
   background: none;
   margin: 0;
-  padding: calc(14 / 17 / 2 * 1rem);
   outline: none;
   color: inherit;
 
@@ -34,7 +33,7 @@
   }
 
   @media (--media-min-small) {
-    display: flex;
+    display: block;
   }
 }
 

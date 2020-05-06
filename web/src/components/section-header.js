@@ -3,12 +3,8 @@ import React from 'react'
 function SectionHeader(props) {
   return (
     <>
-      <div className="mb-6 border-strike relative">
-        <div className="relative flex w-full">
-          <div className="w-1/2"><p className="bg-black inline-block px-2">{props.firstLabel}</p></div>
-          <div className="w-1/4"><p className="bg-black inline-block px-2">{props.secondLabel}</p></div>
-          <div className="w-1/4 text-right"><p className="bg-black inline-block px-2">{props.thirdLabel}</p></div>
-        </div>
+      <div className="border-strike relative font-mono text-xs py-6 mr-1 bg-black relative sticky top-0 z-20">
+        <span className="relative bg-black px-4">{props.title}</span>
       </div>
     </>
   )

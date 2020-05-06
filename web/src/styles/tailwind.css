@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 @tailwind base;
@@ -12,14 +12,9 @@
     background: transparent; /* make scrollbar transparent */
 }
 
-iframe::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-}
-
 body {
     -webkit-font-smoothing: antialiased;
-    @apply bg-black text-green-500 text-sm overflow-y-scroll;
+    @apply bg-black text-green-500 text-sm font-sans;
 }
 
 .wrapper {
@@ -72,4 +67,8 @@ body {
 
 .left-1 {
     margin-left: -1px;
+}
+
+.tl-edges {
+    overflow-x: inherit;
 }

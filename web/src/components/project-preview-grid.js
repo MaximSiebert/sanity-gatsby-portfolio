@@ -7,11 +7,14 @@ import SectionHeader from './section-header'
 
 function ProjectPreviewGrid (props) {
   return (
-    <div className="mb-12 w-10/12 ml-auto px-4">
-      <ul className="flex flex-wrap">
+    <div>
+      <SectionHeader
+        title={props.title}
+      />
+      <ul className="flex flex-wrap py-8">
         {props.nodes &&
           props.nodes.map(node => (
-            <li className="w-1/2 p-2" key={node.id}>
+            <li className="min-w-1/2 flex-1" key={node.id}>
                 <ProjectPreview {...node} type={props.type} />
             </li>
           ))}
