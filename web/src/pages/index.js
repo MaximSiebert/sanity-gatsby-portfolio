@@ -91,9 +91,8 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <div>
-        <SectionHeader title="Intro"></SectionHeader>
-        <div className="pl-4 py-8 text-white">
-          <h2 className="text-6xl leading-none font-medium mb-4">Maxim designs systems to build well-crafted sites.</h2>
+        <div className="pl-4 pb-8 text-white">
+          <h2 className="text-5xl leading-tight font-bold mb-4">Maxim designs and develops systems to build well-crafted sites.</h2>
           <p className="text-lg opacity-75">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro enim incidunt amet cum dolores ducimus autem ipsam praesentium, optio expedita nostrum alias laborum fugiat cupiditate maiores eos quo saepe esse.</p>
         </div>
       </div>
@@ -130,7 +129,7 @@ const IndexPage = props => {
           </li>
         </ul>
       </div>
-      <div className="pb-16">
+      <div>
         <TransitionLink
           className="block text-2xl bg-green-500 text-black p-12 rounded-lg ml-1 flex items-center"
           to='/contact/'

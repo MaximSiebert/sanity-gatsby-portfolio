@@ -30,7 +30,7 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
           console.log("enter object is", enter)
           return (
                 <motion.div
-                  className="w-9/12 pl-12 pt-12"
+                  className="w-9/12 pl-12 pt-16 pb-16"
                   initial="false"
                   animate={mount ? "visible" : "hidden"}
                   transition={{ duration: .4, ease: [.19, 1, 0.22, 1] }}

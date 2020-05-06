@@ -51,8 +51,7 @@ const ContactPage = props => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <SectionHeader title="Get In Touch" />
-      <div className="pl-4 py-8">
+      <div className="pl-4 pb-8">
         <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">I design and develop modular, accessible, and performant systems which I use to build well-crafted sites and applications. I do research, try new things, and have honest conversations in order to find the best solutions.</p>
       </div>
     </Layout>
