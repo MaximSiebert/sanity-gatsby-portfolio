@@ -1,6 +1,6 @@
 export default {
-  name: 'sampleProject',
-  title: 'Sample project',
+  name: 'collaborator',
+  title: 'Collaborators',
   type: 'document',
   fields: [
     {
@@ -9,21 +9,10 @@ export default {
       type: 'string'
     },
     {
-      name: 'role',
-      title: 'Role',
-      type: 'string'
-    },
-    {
       name: 'link',
       title: 'Link',
       type: 'url'
-    },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      description: 'You can use this field to schedule projects where you show them',
-      type: 'date'
-    },
+    }
   ],
   preview: {
     select: {
@@ -33,7 +22,7 @@ export default {
     prepare({title = 'No title', link}) {
       return {
         title,
-        subtitle: link
+        link
       }
     }
   }

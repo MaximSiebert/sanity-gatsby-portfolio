@@ -1,42 +1,23 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
-.toggleNavButton {
-  appearance: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  margin: 0;
-  outline: none;
-  color: inherit;
+.mobileNav {
+  display: flex;
 
-  & svg {
-    display: block;
-    fill: inherit;
-  }
-
-  @media (--media-min-small) {
+  @media (--media-min-large) {
     display: none;
   }
 }
 
 .nav {
-  display: none;
+  transform: translateX(-100%);
+  transition: transform .6s cubic-bezier(.19, 1, 0.22, 1);
 
-  @media (--media-max-small) {
-    position: absolute;
-    background: var(--color-white);
-    color: var(--color-black);
-    left: 0;
-    right: 0;
-    top: 4.3rem;
-  }
-
-  @media (--media-min-small) {
-    display: block;
+  @media (--media-min-large) {
+    transform: translateX(0);
   }
 }
 
 .showNav {
-  display: block;
+  transform: translateX(0);
 }

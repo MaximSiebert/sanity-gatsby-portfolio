@@ -7,6 +7,7 @@ import Layout from '../containers/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 import PageTitle from '../components/page-title'
 import SectionHeader from '../components/section-header'
+import Footer from '../components/footer'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -52,8 +53,9 @@ const ContactPage = props => {
     <Layout>
       <SEO title="Contact" />
       <div className="pl-4 pb-8">
-        <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">I design and develop modular, accessible, and performant systems which I use to build well-crafted sites and applications. I do research, try new things, and have honest conversations in order to find the best solutions.</p>
+        <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight">I design and develop modular, accessible, and performant systems which I use to build well-crafted sites and applications. I do research, try new things, and have honest conversations in order to find the best solutions.</p>
       </div>
+      <Footer />
     </Layout>
   )
 }

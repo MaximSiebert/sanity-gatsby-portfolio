@@ -1,0 +1,20 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.blockContent {
+  & a {
+    @apply border-b border-white font-medium;
+    
+    &:hover {
+      @apply .border-transparent;
+    }
+
+    &:active {
+      opacity: .75;
+    }
+  }
+
+  & p {
+    @apply mb-8;
+  }
+}

@@ -7,7 +7,7 @@ import '../styles/tailwind.css'
 import Container from './container'
 import Nav from './nav'
 
-function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
+function Layout ({children, onHideNav, onShowNav, showNav, siteTitle, role}) {
 
   const variants = {
     hidden: {
@@ -22,7 +22,7 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
 
   return (
     <Container>
-      <Nav siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
+      <Nav role={role} siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
       <TransitionState>
         {({ transitionStatus, exit, enter, mount }) => {
           console.log("current page's transition status is", transitionStatus)
@@ -30,10 +30,10 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle}) {
           console.log("enter object is", enter)
           return (
                 <motion.div
-                  className="w-9/12 pl-12 pt-16 pb-16"
-                  initial="false"
+                  className="lg:w-9/12 lg:pl-12 lg:py-20 py-12"
+                  initial="hidden"
                   animate={mount ? "visible" : "hidden"}
-                  transition={{ duration: .4, ease: [.19, 1, 0.22, 1] }}
+                  transition={{ duration: 1, ease: [.19, 1, 0.22, 1] }}
                   variants={variants}
                 >
                   {children}

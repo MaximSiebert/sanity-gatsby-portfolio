@@ -1,21 +1,22 @@
 import React from 'react'
+import {format, distanceInWords, differenceInDays} from 'date-fns'
 import {graphql} from 'gatsby'
 import GraphQLErrorList from '../components/graphql-error-list'
-import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import BlockContent from '../components/block-content'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 import SectionHeader from '../components/section-header'
+import ExternalIcon from '../components/icon/external'
+import Footer from '../components/footer'
 
 export const query = graphql`
   query AboutPageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
-      title
-      description
-      keywords
+    about: sanityAbout(_id: {regex: "/(drafts.|)about/"}) {
+      _rawContent
     }
     experience: allSanityExperience(
-      sort: {fields: [startDate], order: DESC}
+      sort: {fields: [endDate], order: DESC}
     ) {
       edges {
         node {
@@ -28,14 +29,31 @@ export const query = graphql`
         }
       }
     }
+    collaborator: allSanityCollaborator(
+      sort: {fields: [title], order: ASC}
+    ) {
+      edges {
+        node {
+          id
+          title
+          link
+        }
+      }
+    }
   }
 `
 
 const AboutPage = props => {
   const {data, errors} = props
 
+  const about = (data || {}).about
+
   const experienceNodes = (data || {}).experience
   ? mapEdgesToNodes(data.experience)
+  : []
+
+  const collaboratorNodes = (data || {}).collaborator
+  ? mapEdgesToNodes(data.collaborator)
   : []
   
   if (errors) {
@@ -45,16 +63,66 @@ const AboutPage = props => {
       </Layout>
     )
   }
-  const projectNodes =
-    data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+
   return (
     <Layout>
       <SEO title="About" />
-      <div className="pl-4 pb-8">
-        <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">I design and develop modular, accessible, and performant systems which I use to build well-crafted sites and products. I do research, try new things, and have honest conversations in order to find the best solutions.</p>
-        <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">I currently lead design at Planetary and run a studio called Blunt.</p>
-        <p className="tracking-tight normal-case text-white text-4xl mb-12 leading-tight ">This site lists most of the work I've done over the years. If you'd like to learn more about how I got to the solutions listed below, send me an email.</p>
+      <div className="pl-4 pb-8 tracking-tight normal-case text-white text-4xl leading-tight">
+        {about._rawContent && <BlockContent blocks={about._rawContent || []} />}
       </div>
+      <div className="pb-12">
+        <SectionHeader title="Experience" />
+        <ul className="flex flex-wrap">
+          {experienceNodes && (
+              experienceNodes.map(node => (
+                <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
+                  <a
+                    className="group bg-gray-900 hover:bg-gray-800 active:bg-gray-900 rounded-lg block"
+                    href={node.link}
+                    target="_blank"
+                    rel="nooppener noreferrer"
+                  >
+                    <div className="flex items-center p-3">
+                      <h4 className="text-2xl font-bold flex">{node.title}</h4>
+                      <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
+                    </div>
+                    <p className="text-xs font-medium opacity-50 border-t border-black p-3">
+                      {format(new Date(node.startDate), 'MM/YYYY')}
+                      <span className="mx-2">–</span> 
+                      {node.endDate
+                        ? format(new Date(node.endDate), 'MM/YYYY')
+                        : 'Present'
+                      }
+                    </p>
+                  </a>
+                </li>
+            ))
+          )}
+        </ul>
+      </div>
+      <div className="pb-16">
+        <SectionHeader title="Collaborators" />
+        <ul className="flex flex-wrap">
+          {collaboratorNodes && (
+              collaboratorNodes.map(node => (
+                <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
+                  <a
+                    className="group bg-gray-900 hover:bg-gray-800 active:bg-gray-900 rounded-lg block"
+                    href={node.link}
+                    target="_blank"
+                    rel="nooppener noreferrer"
+                  >
+                    <div className="flex items-center p-3">
+                      <h4 className="text-xl font-bold flex">{node.title}</h4>
+                      <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
+                    </div>
+                  </a>
+                </li>
+            ))
+          )}
+        </ul>
+      </div>
+      <Footer />
     </Layout>
   )
 }
