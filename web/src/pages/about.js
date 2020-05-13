@@ -86,14 +86,19 @@ const AboutPage = props => {
                       <h4 className="text-2xl font-bold flex">{node.title}</h4>
                       <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
                     </div>
-                    <p className="text-xs font-medium opacity-50 border-t border-black p-3">
-                      {format(new Date(node.startDate), 'MM/YYYY')}
-                      <span className="mx-2">–</span> 
-                      {node.endDate
-                        ? format(new Date(node.endDate), 'MM/YYYY')
-                        : 'Present'
-                      }
-                    </p>
+                    <div className="border-t border-black p-3 flex text-xs font-medium opacity-75">
+                      <p>
+                        {node.role}
+                      </p>
+                      <p className="ml-auto">
+                        {format(new Date(node.startDate), 'MM/YYYY')}
+                        <span className="mx-2">–</span> 
+                        {node.endDate
+                          ? format(new Date(node.endDate), 'MM/YYYY')
+                          : 'Present'
+                        }
+                      </p>
+                    </div>
                   </a>
                 </li>
             ))
