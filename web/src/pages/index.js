@@ -95,9 +95,9 @@ const IndexPage = props => {
           {serviceNodes && (
               serviceNodes.map(node => (
                 <li className="p-1 text-white" key={node.id}>
-                  <div class="bg-gray-900 rounded-lg">
-                    <h4 className="text-2xl font-bold flex p-3">{node.title}</h4>
-                    <p className="text-lg opacity-50 border-t border-black p-3">
+                  <div class="border border-gray-700">
+                    <h4 className="text-2xl font-bold flex p-3 bg-gray-800">{node.title}</h4>
+                    <p className="text-lg border-t border-gray-700 p-3 text-gray-500">
                       {node.description}
                     </p>
                   </div>

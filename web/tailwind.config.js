@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+      'mono': ['IBM Plex Mono', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace']
     },
     fontSize: {
       'xs': '.75rem',
@@ -27,21 +28,24 @@ module.exports = {
     },
     extend: {
       colors: {
+        'black': '#000000',
         green: {
-          'lightest': '#0B2C24',
-          '100': '#18443A',
-          '500': '#50e3c2'
+          '500': '#51CDD6'
         },
         gray: {
-          '800': '#222',
-          '900': '#191919'
-        }
+          '500': '#399096',
+          '700': '#092325',
+          '800': '#061117',
+          '900': '#000000'
+        },
       }
     },
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'active'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+    borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
   plugins: [],
 }

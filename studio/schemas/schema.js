@@ -15,6 +15,7 @@ import about from './documents/about'
 // Object types
 import bioPortableText from './objects/bioPortableText'
 import figure from './objects/figure'
+import portrait from './objects/portrait'
 import projectPortableText from './objects/projectPortableText'
 import simplePortableText from './objects/simplePortableText'
 
@@ -29,6 +30,7 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     bioPortableText,
     figure,
+    portrait,
     projectPortableText,
     simplePortableText,
     // The following are document types which will appear

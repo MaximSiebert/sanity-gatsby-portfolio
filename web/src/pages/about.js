@@ -1,6 +1,8 @@
 import React from 'react'
 import {format, distanceInWords, differenceInDays} from 'date-fns'
 import {graphql} from 'gatsby'
+import UIfx from 'uifx'
+
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
@@ -9,6 +11,8 @@ import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 import SectionHeader from '../components/section-header'
 import ExternalIcon from '../components/icon/external'
 import Footer from '../components/footer'
+import tickAudio from '../sounds/tick.mp3'
+import clickAudio from '../sounds/click.mp3'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -55,6 +59,30 @@ const AboutPage = props => {
   const collaboratorNodes = (data || {}).collaborator
   ? mapEdgesToNodes(data.collaborator)
   : []
+
+  const tick = new UIfx(
+    tickAudio,
+    {
+      volume: .8, // number between 0.0 ~ 1.0
+      throttleMs: 40
+    }
+  )
+
+  const click = new UIfx(
+    clickAudio,
+    {
+      volume: 0.25, // number between 0.0 ~ 1.0
+      throttleMs: 40
+    }
+  )
+
+  function playTick () {
+    tick.play()
+  }
+
+  function playClick () {
+    click.play()
+  }
   
   if (errors) {
     return (
@@ -77,16 +105,18 @@ const AboutPage = props => {
               experienceNodes.map(node => (
                 <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
                   <a
-                    className="group bg-gray-900 hover:bg-gray-800 active:bg-gray-900 rounded-lg block"
+                    className="clickable-item group block relative items-center hover:bg-gray-800 hover:border-gray-500 text-gray-500 active:bg-gray-900 border border-gray-700"
                     href={node.link}
                     target="_blank"
                     rel="nooppener noreferrer"
+                    onMouseEnter={playTick}
+                    onMouseDown={playClick}
                   >
-                    <div className="flex items-center p-3">
-                      <h4 className="text-2xl font-bold flex">{node.title}</h4>
-                      <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
+                    <div className="flex items-center p-3 group-hover:box-shadow">
+                      <h4 className="text-2xl font-bold flex text-white">{node.title}</h4>
+                      <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto" />
                     </div>
-                    <div className="border-t border-black p-3 flex text-xs font-medium opacity-75">
+                    <div className="group-hover:box-shadow bg-gray-800 border-t border-gray-700 group-hover:border-green-500 p-3 flex text-xs font-medium font-mono uppercase tracking-wider text-gray-500">
                       <p>
                         {node.role}
                       </p>
@@ -112,14 +142,16 @@ const AboutPage = props => {
               collaboratorNodes.map(node => (
                 <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
                   <a
-                    className="group bg-gray-900 hover:bg-gray-800 active:bg-gray-900 rounded-lg block"
+                    className="clickable-item group hover:box-shadow border border-gray-700 hover:bg-gray-800 hover:border-green-500 active:bg-gray-900 block"
                     href={node.link}
                     target="_blank"
                     rel="nooppener noreferrer"
+                    onMouseEnter={playTick}
+                    onMouseDown={playClick}
                   >
                     <div className="flex items-center p-3">
                       <h4 className="text-xl font-bold flex">{node.title}</h4>
-                      <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
+                      <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-gray-500" />
                     </div>
                   </a>
                 </li>
