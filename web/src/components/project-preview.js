@@ -1,39 +1,56 @@
 import React from 'react'
 import {format, distanceInWords, differenceInDays} from 'date-fns'
-import {cn, buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import TransitionLink from "gatsby-plugin-transition-link"
+import UIfx from 'uifx'
 
 import styles from './project-preview.module.css'
 import ExternalIcon from './icon/external'
+import tickAudio from '../sounds/tick.mp3'
+import clickAudio from '../sounds/click.mp3'
 
 function ProjectPreview (props) {
+
+  const tick = new UIfx(
+    tickAudio,
+    {
+      volume: .8, // number between 0.0 ~ 1.0
+      throttleMs: 40
+    }
+  )
+
+  const click = new UIfx(
+    clickAudio,
+    {
+      volume: 0.25, // number between 0.0 ~ 1.0
+      throttleMs: 40
+    }
+  )
+
+  function playTick () {
+    tick.play()
+  }
+
+  function playClick () {
+    click.play()
+  }
+
   return (
     <>
       <div
-        className="text-left text-white rounded-lg p-1 block focus:outline-none"
+        className="text-left p-1 block focus:outline-none"
       >
         <a
           href={props.link}
           target="_blank"
           rel="nooppener noreferrer"
-          className="group block relative items-center bg-gray-900 hover:bg-gray-800 active:bg-gray-900 pt-3 pb-3 rounded-lg">
-          {/* <div className={styles.leadMediaThumb}>
-            {props.mainImage && props.mainImage.asset && (
-              <img
-                src={imageUrlFor(buildImageObj(props.mainImage))
-                  .width(600)
-                  .height(Math.floor((9 / 16) * 600))
-                  .url()}
-                alt={props.mainImage.alt}
-              />
-            )}
-          </div> */}
-          <div className="pb-3 px-3 flex items-center">
-            <h3 className="text-2xl font-bold">{props.title}</h3>
-            <ExternalIcon classes="w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-white" />
+          className="clickable-item group block relative items-center hover:bg-gray-800 hover:border-gray-500 text-gray-500 active:bg-gray-900 border border-gray-700"
+          onMouseEnter={playTick}
+          onMouseDown={playClick}
+        >
+          <div className="py-3 px-3 flex items-center group-hover:box-shadow">
+            <h3 className="text-2xl font-bold text-white">{props.title}</h3>
+            <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto" />
           </div>
-          <div className="flex font-medium text-xs opacity-75 border-t border-black pt-3 px-3">
+          <div className="group-hover:box-shadow flex font-medium text-xs font-mono uppercase tracking-wider border-t border-gray-700 group-hover:border-gray-500 py-3 px-3 bg-gray-800">
             <p>{props.role}</p>
             <div className="ml-auto">
               {props.type === "project"
