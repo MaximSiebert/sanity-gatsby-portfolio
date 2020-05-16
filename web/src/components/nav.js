@@ -71,24 +71,28 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
           >
             <Corners />
             <div class="relative">
-              <img
-                className="block w-16 h-auto portrait"
-                src={imageUrlFor(buildImageObj(portrait))
-                  .width(128)
-                  .height(128)
-                  .fit('crop')
-                  .url()}
-                alt={portrait.alt}
-              />
-              <img
-                className="block w-16 h-auto portrait-hover absolute inset-0"
-                src={imageUrlFor(buildImageObj(portrait))
-                  .width(128)
-                  .height(128)
-                  .fit('crop')
-                  .url()}
-                alt={portrait.alt}
-              />
+              {portrait &&
+                <>
+                  <img
+                    className="block w-16 h-auto portrait"
+                    src={imageUrlFor(buildImageObj(portrait))
+                      .width(128)
+                      .height(128)
+                      .fit('crop')
+                      .url()}
+                    alt={portrait.alt}
+                  />
+                  <img
+                    className="block w-16 h-auto portrait-hover absolute inset-0"
+                    src={imageUrlFor(buildImageObj(portrait))
+                      .width(128)
+                      .height(128)
+                      .fit('crop')
+                      .url()}
+                    alt={portrait.alt}
+                  />
+                </>
+              }
             </div>
             <div className="ml-4 pb-1 block text-base font-bold text-white">
               {siteTitle}
