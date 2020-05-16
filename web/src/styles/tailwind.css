@@ -13,6 +13,9 @@
 
 @variants hover, group-hover {
     .box-shadow {
+        box-shadow: inset 0 0 10px rgba(81, 205, 214,.35);
+    }
+    .box-shadow-light {
         box-shadow: inset 0 0 10px rgba(81, 205, 214,.15);
     }
 }
@@ -40,14 +43,14 @@ button, a, a .border-t, ul, a .ext-icon {
 }
 
 [aria-current="page"].nav-item {
-    @apply bg-green-500 text-black border-green-500;
+    @apply border-green-500 text-green-500;
 }
 
 .tl-edges {
     overflow-x: inherit;
 }
 
-.clickable-item {
+.inner-border {
     @apply relative;
 
     @nest &:before {
@@ -61,8 +64,8 @@ button, a, a .border-t, ul, a .ext-icon {
     }
 }
 
-.clickable-item:hover:before {
-    @apply border-gray-500;
+.clickable-item.inner-border:hover:before {
+    @apply border-green-500;
 }
 
 .ext-icon {
@@ -71,4 +74,41 @@ button, a, a .border-t, ul, a .ext-icon {
 
 .clickable-item:hover .ext-icon  {
     transform: translateX(0);
+}
+
+.clickable-item {
+    @apply relative;
+}
+
+.clickable-item:hover {
+    box-shadow: 0 0 25px 4px rgba(81, 205, 214, 0.25), 2px 2px 12px 1px rgba(81, 205, 214, 0.1);
+}
+
+.portrait {
+    mix-blend-mode: hard-light;
+}
+
+.portrait-hover {
+    opacity: 0;
+    transition: opacity .1s ease-in-out;
+}
+
+.id-badge:hover .portrait-hover {
+    opacity: 1;
+}
+
+.corner.bottom-0 {
+    bottom: -1px;
+}
+
+.corner.top-0 {
+    top: -1px;
+}
+
+.corner.left-0 {
+    left: -1px;
+}
+
+.corner.right-0 {
+    right: -1px;
 }

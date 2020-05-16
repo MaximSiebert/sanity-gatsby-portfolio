@@ -1,6 +1,7 @@
 import React from 'react'
 import {format, distanceInWords, differenceInDays} from 'date-fns'
 import {Howl, Howler} from 'howler';
+import Corners from './corners'
 
 import styles from './project-preview.module.css'
 import ExternalIcon from './icon/external'
@@ -35,15 +36,16 @@ function ProjectPreview (props) {
           href={props.link}
           target="_blank"
           rel="nooppener noreferrer"
-          className="clickable-item group block relative items-center hover:bg-gray-800 hover:border-gray-500 text-gray-500 active:bg-gray-900 border border-gray-700"
+          className="inner-border clickable-item group block relative items-center hover:bg-gray-800 hover:border-green-500 text-gray-500 active:bg-gray-900 border border-gray-700"
           onMouseEnter={playTick}
           onMouseDown={playClick}
         >
+          <Corners />
           <div className="py-3 px-3 flex items-center group-hover:box-shadow">
             <h3 className="text-2xl font-bold text-white">{props.title}</h3>
-            <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto" />
+            <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-green-500" />
           </div>
-          <div className="group-hover:box-shadow flex font-medium text-xs font-mono uppercase tracking-wider border-t border-gray-700 group-hover:border-gray-500 py-3 px-3 bg-gray-800">
+          <div className="group-hover:box-shadow group-hover:text-green-500 flex font-medium text-xs font-mono uppercase tracking-wider border-t border-gray-700 group-hover:border-gray-500 py-3 px-3 bg-gray-800">
             <p>{props.role}</p>
             <div className="ml-auto">
               {props.type === "project"

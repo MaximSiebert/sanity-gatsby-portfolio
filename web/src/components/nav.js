@@ -4,6 +4,7 @@ import TransitionLink from "gatsby-plugin-transition-link"
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import {Howl, Howler} from 'howler';
+import Corners from './corners'
 
 import TwitterIcon from './icon/twitter'
 import DribbbleIcon from './icon/dribbble'
@@ -12,6 +13,7 @@ import Icon from './icon'
 import styles from './nav.module.css'
 import tickAudio from '../sounds/tick.mp3'
 import clickAudio from '../sounds/click.mp3'
+import startAudio from '../sounds/start.mp3'
 
 function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
 
@@ -24,7 +26,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
 
   var click = new Howl({
     src: [clickAudio],
-    volume: 0.25
+    volume: 0.2
+  });
+
+  var start = new Howl({
+    src: [startAudio],
+    volume: 0.15
   });
 
   function playTick () {
@@ -33,6 +40,10 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
 
   function playClick () {
     click.play()
+  }
+
+  function playStart () {
+    start.play()
   }
 
   return (
@@ -47,7 +58,8 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
           <TransitionLink
             onMouseEnter={playTick}
             onMouseDown={playClick}
-            className="p-3 hover:box-shadow leading-tight flex items-center logo border border-gray-700 hover:border-gray-500 hover:bg-gray-800 active:bg-gray-900 font-medium block mb-2"
+            onClick={playStart}
+            className="inner-border group clickable-item id-badge hover:box-shadow-light leading-tight flex items-center logo border border-gray-700 hover:border-green-500 bg-gray-800 active:bg-gray-900 font-medium block mb-2"
             to='/'
             exit={{
               length: length,
@@ -57,22 +69,31 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               length: length
             }}
           >
-            {/* <img
-              className="block w-16 h-auto"
-              src={imageUrlFor(buildImageObj(portrait)).url()}
-              alt={portrait.caption}
-            /> */}
-            <div className="block text-base font-bold text-white">
+            <Corners />
+            <div class="">
+              <img
+                className="block w-16 h-auto portrait"
+                src={imageUrlFor(buildImageObj(portrait)).url()}
+                alt={portrait.caption}
+              />
+              <img
+                className="block w-16 h-auto portrait-hover absolute inset-0"
+                src={imageUrlFor(buildImageObj(portrait)).url()}
+                alt={portrait.caption}
+              />
+            </div>
+            <div className="ml-4 pb-1 block text-base font-bold text-white">
               {siteTitle}
-              <span className="block text-xs font-normal text-gray-500">{role}</span>
+              <span className="font-mono block text-xs font-normal text-gray-500">{role}</span>
             </div>
           </TransitionLink>
-          <ul className="border-t border-b border-gray-700">
-            <li className="border-r border-gray-700">
+          <ul className="border-t border-b border-gray-700 relative">
+            <li className="border-r border-gray-700 z-10 relative">
               <TransitionLink
                 onMouseEnter={playTick}
                 onMouseDown={playClick}
-                className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+                onClick={playStart}
+                className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/'
                 exit={{
                   length: length,
@@ -85,11 +106,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
                   <span className="relative">01. Work & Services</span>
                 </TransitionLink>
             </li>
-            <li className="border-r border-gray-700">
+            <li className="border-r border-gray-700 z-10 relative">
               <TransitionLink
                 onMouseEnter={playTick}
                 onMouseDown={playClick}
-                className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+                onClick={playStart}
+                className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/about/'
                 exit={{
                   length: length
@@ -102,11 +124,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
                 <span className="relative">02. About</span>
               </TransitionLink>
             </li>
-            <li className="border-r border-gray-700">
+            <li className="border-r border-gray-700 z-10 relative">
             <TransitionLink
               onMouseEnter={playTick}
               onMouseDown={playClick}
-              className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+              onClick={playStart}
+              className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
               to='/contact/'
               exit={{
                 length: length
@@ -125,7 +148,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               onMouseEnter={playTick}
               onMouseDown={playClick}
               href=""
-              className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+              className="clickable-item hover:box-shadow-light p-3 border mr-1 border-gray-700 hover:border-green-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
             >
               <TwitterIcon classes="w-4 h-auto" />
             </a>
@@ -133,7 +156,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               onMouseEnter={playTick}
               onMouseDown={playClick}
               href=""
-              className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+              className="clickable-item hover:box-shadow-light p-3 border mr-1 border-gray-700 hover:border-green-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
             >
               <DribbbleIcon classes="w-4 h-auto" />
             </a>
@@ -141,7 +164,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               onMouseEnter={playTick}
               onMouseDown={playClick}
               href=""
-              className="hover:box-shadow p-3 border border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+              className="clickable-item hover:box-shadow-light p-3 border border-gray-700 hover:border-green-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
             >
               <EmailIcon classes="w-4 h-auto" />
             </a>
