@@ -98,6 +98,8 @@ const AboutPage = props => {
               experienceNodes.map(node => (
                 <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
                   <a
+                    onMouseEnter={playTick}
+                    onMouseDown={playClick}
                     className="clickable-item group block relative items-center hover:bg-gray-800 hover:border-gray-500 text-gray-500 active:bg-gray-900 border border-gray-700"
                     href={node.link}
                     target="_blank"
@@ -133,6 +135,8 @@ const AboutPage = props => {
               collaboratorNodes.map(node => (
                 <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
                   <a
+                    onMouseEnter={playTick}
+                    onMouseDown={playClick}
                     className="clickable-item group hover:box-shadow border border-gray-700 hover:bg-gray-800 hover:border-green-500 active:bg-gray-900 block"
                     href={node.link}
                     target="_blank"
