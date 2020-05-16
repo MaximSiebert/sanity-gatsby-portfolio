@@ -99,8 +99,6 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               <span className="font-mono block text-xs font-normal text-gray-500">{role}</span>
             </div>
           </TransitionLink>
-          {JSON.stringify(portrait, null, 2) }
-
           <ul className="border-t border-b border-gray-700 relative">
             <li className="border-r border-gray-700 z-10 relative">
               <TransitionLink
