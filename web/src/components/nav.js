@@ -70,16 +70,24 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
             }}
           >
             <Corners />
-            <div class="">
+            <div class="relative">
               <img
                 className="block w-16 h-auto portrait"
-                src={imageUrlFor(buildImageObj(portrait)).url()}
-                alt={portrait.caption}
+                src={imageUrlFor(buildImageObj(portrait))
+                  .width(128)
+                  .height(128)
+                  .fit('crop')
+                  .url()}
+                alt={portrait.alt}
               />
               <img
                 className="block w-16 h-auto portrait-hover absolute inset-0"
-                src={imageUrlFor(buildImageObj(portrait)).url()}
-                alt={portrait.caption}
+                src={imageUrlFor(buildImageObj(portrait))
+                  .width(128)
+                  .height(128)
+                  .fit('crop')
+                  .url()}
+                alt={portrait.alt}
               />
             </div>
             <div className="ml-4 pb-1 block text-base font-bold text-white">
@@ -87,6 +95,8 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               <span className="font-mono block text-xs font-normal text-gray-500">{role}</span>
             </div>
           </TransitionLink>
+          {JSON.stringify(portrait, null, 2) }
+
           <ul className="border-t border-b border-gray-700 relative">
             <li className="border-r border-gray-700 z-10 relative">
               <TransitionLink

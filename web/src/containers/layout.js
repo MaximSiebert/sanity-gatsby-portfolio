@@ -2,6 +2,7 @@ import {graphql, StaticQuery} from 'gatsby'
 import React, {useState} from 'react'
 
 import Layout from '../components/layout'
+import {buildImageObj} from '../lib/helpers'
 
 const query = graphql`
   query SiteTitleQuery {
@@ -9,10 +10,26 @@ const query = graphql`
       title
       role
       portrait {
+        crop {
+          _key
+          _type
+          top
+          bottom
+          left
+          right
+        }
+        hotspot {
+          _key
+          _type
+          x
+          y
+          height
+          width
+        }
         asset {
           _id
         }
-        caption
+        alt
       }
     }
   }

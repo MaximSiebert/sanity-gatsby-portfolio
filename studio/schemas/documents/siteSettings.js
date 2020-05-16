@@ -12,7 +12,7 @@ export default {
     {
       title: 'Portrait',
       name: 'portrait',
-      type: 'portrait',
+      type: 'figure',
     },
     {
       name: 'title',
