@@ -47,10 +47,27 @@ button, a, a .border-t, ul, a .ext-icon {
     overflow-x: inherit;
 }
 
+.clickable-item {
+    @apply relative;
+
+    @nest &:before {
+        @apply absolute border border-gray-700;
+        content: "";
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        top: 2px;
+        transition: border-color .1s ease-in-out;
+    }
+}
+
+.clickable-item:hover:before {
+    @apply border-gray-500;
+}
+
 .ext-icon {
     transform: translateX(-50%);
 }
-
 
 .clickable-item:hover .ext-icon  {
     transform: translateX(0);
