@@ -1,7 +1,7 @@
 import React from 'react'
 import {format, distanceInWords, differenceInDays} from 'date-fns'
 import {graphql} from 'gatsby'
-import UIfx from 'uifx'
+import {Howl, Howler} from 'howler';
 
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
@@ -59,30 +59,6 @@ const AboutPage = props => {
   const collaboratorNodes = (data || {}).collaborator
   ? mapEdgesToNodes(data.collaborator)
   : []
-
-  const tick = new UIfx(
-    tickAudio,
-    {
-      volume: .8, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
-
-  const click = new UIfx(
-    clickAudio,
-    {
-      volume: 0.25, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
-
-  function playTick () {
-    tick.play()
-  }
-
-  function playClick () {
-    click.play()
-  }
   
   if (errors) {
     return (
@@ -90,6 +66,23 @@ const AboutPage = props => {
         <GraphQLErrorList errors={errors} />
       </Layout>
     )
+  }
+
+  var tick = new Howl({
+    src: [tickAudio]
+  });
+
+  var click = new Howl({
+    src: [clickAudio],
+    volume: 0.25
+  });
+
+  function playTick () {
+    tick.play()
+  }
+
+  function playClick () {
+    click.play()
   }
 
   return (
@@ -109,8 +102,6 @@ const AboutPage = props => {
                     href={node.link}
                     target="_blank"
                     rel="nooppener noreferrer"
-                    onMouseEnter={playTick}
-                    onMouseDown={playClick}
                   >
                     <div className="flex items-center p-3 group-hover:box-shadow">
                       <h4 className="text-2xl font-bold flex text-white">{node.title}</h4>
@@ -146,8 +137,6 @@ const AboutPage = props => {
                     href={node.link}
                     target="_blank"
                     rel="nooppener noreferrer"
-                    onMouseEnter={playTick}
-                    onMouseDown={playClick}
                   >
                     <div className="flex items-center p-3">
                       <h4 className="text-xl font-bold flex">{node.title}</h4>

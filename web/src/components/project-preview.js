@@ -1,6 +1,6 @@
 import React from 'react'
 import {format, distanceInWords, differenceInDays} from 'date-fns'
-import UIfx from 'uifx'
+import {Howl, Howler} from 'howler';
 
 import styles from './project-preview.module.css'
 import ExternalIcon from './icon/external'
@@ -9,21 +9,14 @@ import clickAudio from '../sounds/click.mp3'
 
 function ProjectPreview (props) {
 
-  const tick = new UIfx(
-    tickAudio,
-    {
-      volume: .8, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
+  var tick = new Howl({
+    src: [tickAudio]
+  });
 
-  const click = new UIfx(
-    clickAudio,
-    {
-      volume: 0.25, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
+  var click = new Howl({
+    src: [clickAudio],
+    volume: 0.25
+  });
 
   function playTick () {
     tick.play()
