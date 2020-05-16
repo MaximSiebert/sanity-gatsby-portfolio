@@ -3,7 +3,7 @@ import {cn} from '../lib/helpers'
 import TransitionLink from "gatsby-plugin-transition-link"
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
-import UIfx from 'uifx'
+import {Howl, Howler} from 'howler';
 
 import TwitterIcon from './icon/twitter'
 import DribbbleIcon from './icon/dribbble'
@@ -15,32 +15,25 @@ import clickAudio from '../sounds/click.mp3'
 
 function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
 
-  const tick = new UIfx(
-    tickAudio,
-    {
-      volume: .8, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
+  const length = 1;
+  const delay = .6;
 
-  const click = new UIfx(
-    clickAudio,
-    {
-      volume: 0.25, // number between 0.0 ~ 1.0
-      throttleMs: 40
-    }
-  )
+  var tick = new Howl({
+    src: [tickAudio]
+  });
 
-  function playTick (volume) {
-    tick.play(volume)
+  var click = new Howl({
+    src: [clickAudio],
+    volume: 0.25
+  });
+
+  function playTick () {
+    tick.play()
   }
 
   function playClick () {
     click.play()
   }
-
-  const length = 1;
-  const delay = .6;
 
   return (
     <>
@@ -52,9 +45,9 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
       <nav className={cn(styles.nav, showNav && styles.showNav, "lg:w-3/12 w-8/12 lg:sticky fixed bg-black top-0 lg:py-20 py-4 left-0 lg:pr-12 lg:pl-0 px-4 h-screen z-30")}>
         <div className="flex flex-col h-full">
           <TransitionLink
-            onMouseEnter={() => playTick(.8)}
+            onMouseEnter={playTick}
             onMouseDown={playClick}
-            className="hover:box-shadow leading-tight flex items-center logo border border-gray-700 hover:border-gray-500 hover:bg-gray-800 active:bg-gray-900 font-medium block mb-2"
+            className="p-3 hover:box-shadow leading-tight flex items-center logo border border-gray-700 hover:border-gray-500 hover:bg-gray-800 active:bg-gray-900 font-medium block mb-2"
             to='/'
             exit={{
               length: length,
@@ -64,13 +57,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               length: length
             }}
           >
-            <img
+            {/* <img
               className="block w-16 h-auto"
-              src={imageUrlFor(buildImageObj(portrait))
-                .url()}
+              src={imageUrlFor(buildImageObj(portrait)).url()}
               alt={portrait.caption}
-            />
-            <div className="ml-3 pb-1 block text-base font-bold text-white">
+            /> */}
+            <div className="block text-base font-bold text-white">
               {siteTitle}
               <span className="block text-xs font-normal text-gray-500">{role}</span>
             </div>
@@ -78,7 +70,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
           <ul className="border-t border-b border-gray-700">
             <li className="border-r border-gray-700">
               <TransitionLink
-                onMouseEnter={() => playTick(0.5)}
+                onMouseEnter={playTick}
                 onMouseDown={playClick}
                 className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/'
@@ -95,7 +87,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
             </li>
             <li className="border-r border-gray-700">
               <TransitionLink
-                onMouseEnter={() => playTick(0.5)}
+                onMouseEnter={playTick}
                 onMouseDown={playClick}
                 className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/about/'
@@ -112,7 +104,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
             </li>
             <li className="border-r border-gray-700">
             <TransitionLink
-              onMouseEnter={() => playTick(0.5)}
+              onMouseEnter={playTick}
               onMouseDown={playClick}
               className="hover:box-shadow nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
               to='/contact/'
@@ -129,13 +121,28 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
             </li>
           </ul>
           <div className="mt-auto text-xs pl-1 flex items-center">
-            <a onMouseEnter={() => playTick(0.5)} onMouseDown={playClick} href="" className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900">
+            <a
+              onMouseEnter={playTick}
+              onMouseDown={playClick}
+              href=""
+              className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+            >
               <TwitterIcon classes="w-4 h-auto" />
             </a>
-            <a onMouseEnter={() => playTick(0.5)} onMouseDown={playClick} href="" className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900">
+            <a
+              onMouseEnter={playTick}
+              onMouseDown={playClick}
+              href=""
+              className="hover:box-shadow p-3 border mr-1 border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+            >
               <DribbbleIcon classes="w-4 h-auto" />
             </a>
-            <a onMouseEnter={() => playTick(0.5)} onMouseDown={playClick} href="" className="hover:box-shadow p-3 border border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900">
+            <a
+              onMouseEnter={playTick}
+              onMouseDown={playClick}
+              href=""
+              className="hover:box-shadow p-3 border border-gray-700 hover:border-gray-500 text-gray-500 hover:text-green-500 hover:bg-gray-800 active:bg-gray-900"
+            >
               <EmailIcon classes="w-4 h-auto" />
             </a>
           </div>
