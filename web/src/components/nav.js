@@ -69,7 +69,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               length: length
             }}
           >
-            <Corners />
+            <Corners classes="out" />
             <div class="relative">
               {portrait &&
                 <>
@@ -105,7 +105,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
                 onMouseEnter={playTick}
                 onMouseDown={playClick}
                 onClick={playStart}
-                className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+                className="nav-item text-xs uppercase border-l border-gray-700 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/'
                 exit={{
                   length: length,
@@ -123,7 +123,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
                 onMouseEnter={playTick}
                 onMouseDown={playClick}
                 onClick={playStart}
-                className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+                className="nav-item text-xs uppercase border-l border-gray-700 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
                 to='/about/'
                 exit={{
                   length: length
@@ -141,7 +141,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               onMouseEnter={playTick}
               onMouseDown={playClick}
               onClick={playStart}
-              className="hover:box-shadow-light nav-item text-xs uppercase border-l border-gray-700 hover:border-green-500 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
+              className="nav-item text-xs uppercase border-l border-gray-700 tracking-wider text-gray-500 hover:text-green-500 block px-4 py-3 hover:bg-gray-800 active:bg-gray-900 font-medium font-mono"
               to='/contact/'
               exit={{
                 length: length
@@ -155,7 +155,8 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait}) {
               </TransitionLink>
             </li>
           </ul>
-          <div className="mt-auto text-xs pl-1 flex items-center">
+          <div className="mt-auto mr-auto text-xs flex items-center relative group">
+            <Corners />
             <a
               onMouseEnter={playTick}
               onMouseDown={playClick}

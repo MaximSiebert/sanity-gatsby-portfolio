@@ -40,7 +40,7 @@ function ProjectPreview (props) {
           onMouseEnter={playTick}
           onMouseDown={playClick}
         >
-          <Corners />
+          <Corners classes="out" />
           <div className="py-3 px-3 flex items-center group-hover:box-shadow">
             <h3 className="text-2xl font-bold text-white">{props.title}</h3>
             <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-green-500" />

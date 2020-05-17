@@ -43,7 +43,7 @@ button, a, a .border-t, ul, a .ext-icon {
 }
 
 [aria-current="page"].nav-item {
-    @apply border-green-500 text-green-500;
+    @apply border-green-500 text-green-500 bg-gray-800;
 }
 
 .tl-edges {
@@ -97,18 +97,22 @@ button, a, a .border-t, ul, a .ext-icon {
     opacity: 1;
 }
 
-.corner.bottom-0 {
+.corner {
+    transition: border-color .1s ease-in-out;
+}
+
+.corner.out.bottom-0 {
     bottom: -1px;
 }
 
-.corner.top-0 {
+.corner.out.top-0 {
     top: -1px;
 }
 
-.corner.left-0 {
+.corner.out.left-0 {
     left: -1px;
 }
 
-.corner.right-0 {
+.corner.out.right-0 {
     right: -1px;
 }

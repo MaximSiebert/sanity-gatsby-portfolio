@@ -106,7 +106,7 @@ const AboutPage = props => {
                     target="_blank"
                     rel="nooppener noreferrer"
                   >
-                    <Corners />
+                    <Corners classes="out" />
                     <div className="flex items-center p-3 group-hover:box-shadow">
                       <h4 className="text-2xl font-bold flex text-white">{node.title}</h4>
                       <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-green-500" />
@@ -144,7 +144,7 @@ const AboutPage = props => {
                     target="_blank"
                     rel="nooppener noreferrer"
                   >
-                    <Corners />
+                    <Corners classes="out" />
                     <div className="flex items-center p-3">
                       <h4 className="text-xl font-bold flex">{node.title}</h4>
                       <ExternalIcon classes="ext-icon w-5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-100 ml-auto text-green-500" />
