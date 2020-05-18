@@ -26,6 +26,9 @@ module.exports = {
       '3/4': '75%',
       'full': '100%',
     },
+    maxWidth: {
+      '6xl': '80rem'
+    },
     extend: {
       colors: {
         'black': '#000000',

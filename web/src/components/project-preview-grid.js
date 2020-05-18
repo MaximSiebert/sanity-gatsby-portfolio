@@ -11,10 +11,10 @@ function ProjectPreviewGrid (props) {
       <SectionHeader
         title={props.title}
       />
-      <ul className="flex flex-wrap pb-8">
+      <ul className="flex flex-wrap md:pb-8 pb-4">
         {props.nodes &&
           props.nodes.map(node => (
-            <li className="min-w-1/2 flex-1" key={node.id}>
+            <li className="min-w-1/2 md:w-1/2 w-full md:flex-1" key={node.id}>
                 <ProjectPreview {...node} type={props.type} />
             </li>
           ))}

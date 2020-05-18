@@ -89,15 +89,15 @@ const AboutPage = props => {
   return (
     <Layout>
       <SEO title="About" />
-      <div className="pl-4 pb-8 tracking-tight normal-case text-white text-4xl leading-tight">
+      <div className="pl-4 md:pb-8 pb-4 tracking-tight normal-case text-white md:text-4xl text-xl md:leading-tight">
         {about._rawContent && <BlockContent blocks={about._rawContent || []} />}
       </div>
-      <div className="pb-12">
+      <div className="md:pb-8 pb-4">
         <SectionHeader title="Experience" />
         <ul className="flex flex-wrap">
           {experienceNodes && (
               experienceNodes.map(node => (
-                <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
+                <li className="min-w-1/2 md:w-1/2 w-full md:flex-1 text-white p-1" key={node.id}>
                   <a
                     onMouseEnter={playTick}
                     onMouseDown={playClick}
@@ -130,12 +130,12 @@ const AboutPage = props => {
           )}
         </ul>
       </div>
-      <div className="pb-16">
+      <div className="lg:pb-16 md:pb-12 pb-8">
         <SectionHeader title="Collaborators" />
         <ul className="flex flex-wrap">
           {collaboratorNodes && (
               collaboratorNodes.map(node => (
-                <li className="min-w-1/2 flex-1 text-white p-1" key={node.id}>
+                <li className="min-w-1/2 md:w-1/2 w-full md:flex-1 text-white p-1" key={node.id}>
                   <a
                     onMouseEnter={playTick}
                     onMouseDown={playClick}

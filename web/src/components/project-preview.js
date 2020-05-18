@@ -30,7 +30,7 @@ function ProjectPreview (props) {
   return (
     <>
       <div
-        className="text-left p-1 block focus:outline-none"
+        className="p-1 block focus:outline-none"
       >
         <a
           href={props.link}

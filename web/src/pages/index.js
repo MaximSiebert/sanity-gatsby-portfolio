@@ -13,6 +13,7 @@ import TransitionLink from "gatsby-plugin-transition-link"
 import DribbbleIcon from '../components/icon/dribbble'
 import BlockText from '../components/block-text'
 import Footer from '../components/footer'
+import Corners from '../components/corners'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -78,8 +79,8 @@ const IndexPage = props => {
     <Layout data={data}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <div>
-        <div className="pl-4 pb-8 text-white">
-          <h2 className="text-5xl leading-tight tracking-tight font-bold mb-4">{site.description}</h2>
+        <div className="pl-4 lg:pb-12 md:pb-6 pb-4 text-white">
+          <h2 className="md:text-5xl text-3xl leading-tight tracking-tight font-bold">{site.description}</h2>
         </div>
       </div>
       {projectNodes && (
@@ -89,13 +90,14 @@ const IndexPage = props => {
           nodes={projectNodes}
         />
       )}
-      <div className="pb-16">
+      <div className="lg:pb-16 md:pb-12 pb-8">
         <SectionHeader title="Services" />
         <ul>
           {serviceNodes && (
               serviceNodes.map(node => (
                 <li className="p-1 text-white" key={node.id}>
-                  <div class="border border-gray-700">
+                  <div class="border border-gray-700 relative">
+                    <Corners classes="out" />
                     <h4 className="text-2xl font-bold flex p-3 bg-gray-800">{node.title}</h4>
                     <p className="text-lg border-t border-gray-700 p-3 text-gray-500">
                       {node.description}
