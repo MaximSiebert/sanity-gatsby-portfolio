@@ -17,7 +17,7 @@ import clickAudio from '../sounds/click.mp3'
 import startAudio from '../sounds/start.mp3'
 import { motion } from 'framer-motion'
 
-function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef, enter, exit}) {
+function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef, enter, exit, mount}) {
 
   const length = 1;
   const delay = .6;
@@ -70,12 +70,12 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
         </button>
       </div>
       <div
-        className={cn(showNav ? "lg:invisible visible lg:opacity-0 opacity-100" : "invisible opacity-0", "overlay fixed inset-0 z-20")}
+        className={cn((showNav && mount) ? "lg:invisible visible lg:opacity-0 opacity-100" : "invisible opacity-0", "overlay fixed inset-0 z-20")}
         onClick={onHideNav}
       />
-      <motnav
+      <nav
         ref={navRef}
-        className={cn(styles.nav, showNav && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
+        className={cn(styles.nav, (showNav && mount) && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
       >
         <div
           className="flex flex-col h-full"
@@ -180,7 +180,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
             </a>
           </div>
         </div>
-      </motnav>
+      </nav>
     </>
   )
 }
