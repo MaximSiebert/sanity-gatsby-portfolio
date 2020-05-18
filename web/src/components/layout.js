@@ -23,33 +23,35 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle, role, port
 
   return (
     <Container>
-      <Nav
-        navRef={navRef}
-        role={role}
-        siteTitle={siteTitle}
-        portrait={portrait}
-        onHideNav={onHideNav}
-        onShowNav={onShowNav}
-        showNav={showNav}
-      />
       <TransitionState>
         {({ transitionStatus, exit, enter, mount }) => {
-          console.log("current page's transition status is", transitionStatus)
-          console.log("exit object is", exit)
-          console.log("enter object is", enter)
           return (
-                <motion.div
-                  className={cn(showNav && "lg:no-blur blur", "lg:w-9/12 lg:pl-12 lg:py-20 pt-24 pb-8")}
-                  onHideNav={onHideNav}
-                  onShowNav={onShowNav}
-                  showNav={showNav}
-                  initial="hidden"
-                  animate={mount ? "visible" : "hidden"}
-                  transition={{ duration: 1, ease: [.19, 1, 0.22, 1] }}
-                  variants={variants}
-                >
-                  {children}
-                </motion.div>
+            <>
+              <Nav
+                navRef={navRef}
+                role={role}
+                siteTitle={siteTitle}
+                portrait={portrait}
+                onHideNav={onHideNav}
+                onShowNav={onShowNav}
+                showNav={showNav}
+                enter={enter}
+                exit={exit}
+                mount={mount}
+              />
+              <motion.div
+                className="lg:w-9/12 lg:pl-12 lg:py-20 pt-24 pb-8"
+                onHideNav={onHideNav}
+                onShowNav={onShowNav}
+                showNav={showNav}
+                initial="hidden"
+                animate={mount ? "visible" : "hidden"}
+                transition={{ duration: 1, ease: [.19, 1, 0.22, 1] }}
+                variants={variants}
+              >
+                {children}
+              </motion.div>
+            </>
           )
         }}
       </TransitionState>

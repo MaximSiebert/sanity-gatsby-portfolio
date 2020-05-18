@@ -11,16 +11,17 @@
     background: transparent; /* make scrollbar transparent */
 }
 
-.blur {
-    filter: blur(3px);
-    transition: opacity .1s ease-in-out, filter .1s ease-in-out;
-    opacity: .5 !important;
+.overlay {
+    backdrop-filter: saturate(180%) blur(5px);
+    background: rgba(0,0,0,.3);
 }
 
-@variants responsive {
-    .no-blur {
-        filter: blur(0);
-    }
+.overlay.invisible {
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.overlay.visible {
+    transition: visibility 0s linear 0s, opacity 300ms;
 }
 
 @variants hover, group-hover {
@@ -29,6 +30,16 @@
     }
     .box-shadow-light {
         box-shadow: inset 0 0 10px rgba(81, 205, 214,.15);
+    }
+}
+
+.shadow {
+    box-shadow: 0 0 65px 4px rgba(81, 205, 214, 0.15), 2px 2px 12px 1px rgba(81, 205, 214, 0.1);
+}
+
+@variants responsive {
+    .no-shadow {
+        box-shadow: none;
     }
 }
 

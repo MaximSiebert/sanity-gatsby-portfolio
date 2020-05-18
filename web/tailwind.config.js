@@ -27,6 +27,7 @@ module.exports = {
       'full': '100%',
     },
     maxWidth: {
+      '4xl': '30rem',
       '6xl': '80rem'
     },
     extend: {

@@ -17,7 +17,7 @@ import clickAudio from '../sounds/click.mp3'
 import startAudio from '../sounds/start.mp3'
 import { motion } from 'framer-motion'
 
-function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef}) {
+function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef, enter, exit}) {
 
   const length = 1;
   const delay = .6;
@@ -51,7 +51,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef}
   return (
     <>
       <div
-        className={cn(showNav && "lg:no-blur blur", "lg:hidden flex items-center px-5 py-2 bg-black border-b border-gray-700 fixed w-full top-0 left-0 z-30")}
+        className="px-5 py-2 lg:hidden flex items-center bg-black border-b border-gray-700 fixed w-full top-0 left-0 z-20"
       >
         <IdBadge
           siteTitle={siteTitle}
@@ -63,15 +63,19 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef}
           onMouseEnter={playTick}
           onMouseDown={playClick}
           onClick={playStart}
-          className="ml-auto text-3xl focus:outline-none border border-gray-700 hover:border-green-500 hover:bg-gray-800 active:bg-black text-gray-500 hover:text-green-500"
+          className="ml-auto text-3xl focus:outline-none text-gray-500 hover:text-green-500"
           onClick={showNav ? onHideNav : onShowNav}
         >
           <Icon symbol='hamburger' />
         </button>
       </div>
-      <nav
+      <div
+        className={cn(showNav ? "lg:invisible visible lg:opacity-0 opacity-100" : "invisible opacity-0", "overlay fixed inset-0 z-20")}
+        onClick={onHideNav}
+      />
+      <motnav
         ref={navRef}
-        className={cn(styles.nav, showNav && styles.showNav, "lg:w-3/12 w-8/12 lg:sticky fixed top-0 lg:py-20 left-0 lg:pr-12 lg:pl-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 h-screen z-30")}
+        className={cn(styles.nav, showNav && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
       >
         <div
           className="flex flex-col h-full"
@@ -176,7 +180,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef}
             </a>
           </div>
         </div>
-      </nav>
+      </motnav>
     </>
   )
 }
