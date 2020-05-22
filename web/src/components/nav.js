@@ -16,6 +16,7 @@ import tickAudio from '../sounds/tick.mp3'
 import clickAudio from '../sounds/click.mp3'
 import startAudio from '../sounds/start.mp3'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef, enter, exit, mount}) {
 
@@ -48,6 +49,25 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
     start.play()
   }
 
+  const navVariants = {
+    hidden: {
+      opacity: 0,
+      y: 10
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 3,
+        ease: [.19, 1, 0.22, 1]
+      },
+    },
+  }
+
+  useEffect (() => {
+    console.log('mounted')
+  }, [mount]);
+
   return (
     <>
       <div
@@ -70,12 +90,15 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
         </button>
       </div>
       <div
-        className={cn((showNav && mount) ? "lg:invisible visible lg:opacity-0 opacity-100" : "invisible opacity-0", "overlay fixed inset-0 z-20")}
+        className={cn((showNav) ? "lg:invisible visible lg:opacity-0 opacity-100" : "invisible opacity-0", "overlay fixed inset-0 z-20")}
         onClick={onHideNav}
       />
-      <nav
+      <motion.nav
+        initial="hidden"
+        animate={"visible"}
+        variants={navVariants}
         ref={navRef}
-        className={cn(styles.nav, (showNav && mount) && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
+        className={cn(styles.nav, (showNav) && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
       >
         <div
           className="flex flex-col h-full"
@@ -180,7 +203,7 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
             </a>
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </>
   )
 }

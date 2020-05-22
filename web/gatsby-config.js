@@ -12,7 +12,12 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        component: require.resolve('./src/components/layout.js')
+      }
+    },
     {
       resolve: 'gatsby-source-sanity',
       options: {

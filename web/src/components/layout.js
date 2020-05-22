@@ -5,7 +5,6 @@ import {cn} from '../lib/helpers'
 
 import '../styles/layout.css'
 import '../styles/tailwind.css'
-import Container from './container'
 import Nav from './nav'
 
 function Layout ({children, onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef}) {
@@ -22,23 +21,20 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle, role, port
   }
 
   return (
-    <Container>
+    <div className="lg:max-w-6xl mx-auto flex items-start px-4">
+      <Nav
+        navRef={navRef}
+        role={role}
+        siteTitle={siteTitle}
+        portrait={portrait}
+        onHideNav={onHideNav}
+        onShowNav={onShowNav}
+        showNav={showNav}
+      />
       <TransitionState>
         {({ transitionStatus, exit, enter, mount }) => {
           return (
             <>
-              <Nav
-                navRef={navRef}
-                role={role}
-                siteTitle={siteTitle}
-                portrait={portrait}
-                onHideNav={onHideNav}
-                onShowNav={onShowNav}
-                showNav={showNav}
-                enter={enter}
-                exit={exit}
-                mount={mount}
-              />
               <motion.div
                 className="lg:w-9/12 lg:pl-12 lg:py-20 pt-24 pb-8"
                 onHideNav={onHideNav}
@@ -55,7 +51,7 @@ function Layout ({children, onHideNav, onShowNav, showNav, siteTitle, role, port
           )
         }}
       </TransitionState>
-    </Container>
+    </div>
   )
 }
 
