@@ -94,9 +94,10 @@ function Nav ({onHideNav, onShowNav, showNav, siteTitle, role, portrait, navRef,
         onClick={onHideNav}
       />
       <motion.nav
-        initial="hidden"
-        animate="visible"
-        variants={navVariants}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2 }}
         ref={navRef}
         className={cn(styles.nav, (showNav && mount) && styles.showNav, "lg:w-3/12 w-10/12 max-w-4xl lg:sticky fixed top-0 bottom-0 lg:h-screen lg:py-20 left-0 xl:pr-12 lg:p-0 p-4 bg-black lg:border-r-0 border-r border-gray-700 z-30")}
       >
